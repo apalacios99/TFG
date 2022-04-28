@@ -1,0 +1,13 @@
+<div class="w-100 bg-light p-1">
+  <div class="w-100 d-flex justify-content-center mb-2 mt-2 ml-3 p-0">
+    <img src="../assets/logo.jpg" style="height: 45px">
+  </div>
+</div>
+
+
+
+<div [ngClass]="showMenu ? 'margin-left-250': 'ml-0'" *ngIf="!(isMobile && showMenu)">
+  <div class="mb-5 container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>

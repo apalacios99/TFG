@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <div class="card mt-2 p-0" id="co2" #CO2_ELEMENT>
+      <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="small" color="#003c8f" type="square-jelly-box" [fullScreen]="false"
+                   style="z-index: 1000"></ngx-spinner>
+      <div class="card-header p-2 d-flex">
+        <div class="w-75">Dióxido de carbono</div>
+
+        <div class="w-25 d-flex justify-content-end">
+          <i class="far fa-image mr-3" (click)="saveGraphicImg(CO2_ELEMENT,'CO2')"></i>
+          <i class="fas fa-file-pdf mr-3" (click)="saveGraphicPdf(CO2_ELEMENT,'CO2')"></i>
+          <i class="fas fa-expand-alt fa-1x" (click)="openModal(OPEN_CO2)"></i>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="max-value m-2 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
+          <div class="text-center">
+            Máximo<br/>
+            <h4>{{CO2maxValue}}</h4>
+          </div>
+        </div>
+        <div class="recommended-value m-2 p-2 rounded-circle d-flex justify-content-center align-items-center">
+          <div class="text-center">
+            Medio<br/>
+            <h4>{{CO2midValue}}</h4>
+          </div>
+        </div>
+        <div class="min-value m-2 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
+          <div class="text-center">
+            Mínimo<br/>
+            <h4>{{CO2minValue}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="p-2">
+        <canvas baseChart
+                [height]="200"
+                [datasets]="CO2barChartData"
+                [labels]="CO2barChartLabels"
+                [options]="CO2barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="chartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<ng-template #OPEN_CO2 let-modal >
+  <div class="modal-body">
+    <div class="container">
+      <div class="d-flex mb-2 w-100">
+        <div class="d-flex w-75 font-weight-bold">Dióxido de carbono</div>
+        <div class="d-flex justify-content-end w-25">
+          <a class="text-danger" (click)="modal.close()">
+            <i class="fas fa-times-circle fa-2x"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="max-value m-3 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
+          <div class="text-center">
+            Valor máximo<br/>
+            <h4>{{CO2maxValue}}</h4>
+          </div>
+        </div>
+        <div class="recommended-value m-3 p-2 rounded-circle d-flex justify-content-center align-items-center">
+          <div class="text-center">
+            Valor medio<br/>
+            <h4>{{CO2midValue}}</h4>
+          </div>
+        </div>
+        <div class="min-value m-3 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
+          <div class="text-center">
+            Valor mínimo<br/>
+            <h4>{{CO2minValue}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="p-2" style="display: block">
+        <canvas baseChart
+                [height]="modalSize"
+                [datasets]="CO2barChartData"
+                [labels]="CO2barChartLabels"
+                [options]="CO2barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="chartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
