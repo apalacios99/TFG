@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService} from '../../services/firestore/firestore.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DatePipe} from '@angular/common';
 import {map} from 'rxjs/operators';
-import {SensorData} from '../../interfaces/sensor-data';
+import {Sensor} from '../../interfaces/sensor';
 import html2canvas from 'html2canvas';
-import {jsPDF} from 'jspdf';
 
 @Component({
   selector: 'app-real-time',
@@ -14,8 +12,7 @@ import {jsPDF} from 'jspdf';
 })
 export class RealTimeComponent implements OnInit {
 
-  constructor(private firestoreService: FirestoreService, private modalService: NgbModal,
-                private datePipe: DatePipe) { }
+  constructor(private firestoreService: FirestoreService, private datePipe: DatePipe) { }
   // CO2
   CO2barChartOptions;
   CO2barChartLabels = [];
@@ -26,12 +23,11 @@ export class RealTimeComponent implements OnInit {
   CO2maxValue = 0;
   CO2midValue = '0';
   CO2Max = 1000;
-
   chartType: string = 'line';
   barChartLegend = true;
+  sensorData: Array<Sensor> = [];
 
-  sensorData: Array<SensorData> = [];
-  modalSize = 190;
+
   ngOnInit(): void {
     this.initValuesCO2();
     this.readFireBaseData();
@@ -39,9 +35,9 @@ export class RealTimeComponent implements OnInit {
 
   initValuesCO2(){
     this.CO2barChartData =[
-      {data: [], label: 'CO2', fill: false, borderColor: '#212121',pointRadius: 0, borderWidth: 1.5},
-      {data: [], label: 'Limite superior', fill: false, borderColor: '#b71c1c',pointRadius: 0, borderWidth: 0.5},
-      {data: [], label: 'Limite ' , fill: false, borderColor: '#b71c1c',pointRadius: 0, borderWidth: 0.5},
+      {data: [], label: 'CO2', fill: false, borderColor: '#00c853',pointRadius: 0, borderWidth: 1.5},
+      {data: [], label: 'Limite superior', fill: false, borderColor: '#d50000',pointRadius: 0, borderWidth: 0.5},
+      {data: [], label: 'Limite inferior ' , fill: false, borderColor: '#00b0ff',pointRadius: 0, borderWidth: 0.5},
     ];
 
     this.CO2barChartOptions= {
@@ -62,15 +58,6 @@ export class RealTimeComponent implements OnInit {
     };
   }
 
-  openModal(modal){
-    if (window.innerWidth <= 700){
-      this.modalSize = 300;
-    } else {
-      this.modalSize = 190;
-    }
-    this.modalService.open(modal, {backdropClass: 'light-grey-backdrop', centered: true, windowClass : "ng-modal", size: 'xl'});
-  }
-
   readFireBaseData(){
     let date = this.datePipe.transform(new Date((new Date()).getTime() -(60*60*1000)), 'yyyy-MM-ddTHH:mm:ss');
 
@@ -83,7 +70,7 @@ export class RealTimeComponent implements OnInit {
           return { id, ...data };
         })
       })
-    ).subscribe((sensorData: Array<SensorData>) => {
+    ).subscribe((sensorData: Array<Sensor>) => {
       // Lo ordeno por la fecha
       sensorData.sort((a,b) => a.fechaHora.localeCompare(b.fechaHora))
       if (sensorData.length != 0){
@@ -94,7 +81,7 @@ export class RealTimeComponent implements OnInit {
     });
   }
 
-  graphicData(sensorData: Array<SensorData>, collection){
+  graphicData(sensorData: Array<Sensor>, collection){
     sensorData.forEach(e => {
       this.CO2barChartData[0].data.push(e.eco2);
       this.CO2barChartData[1].data.push(this.CO2maxLimit);
@@ -105,7 +92,7 @@ export class RealTimeComponent implements OnInit {
     });
   }
 
-  calculateMinMedMaxValues(sensorData: Array<SensorData>){
+  calculateMinMedMaxValues(sensorData: Array<Sensor>){
     let maxValue = sensorData[0].eco2;
     let minValue  = sensorData[0].eco2;
     let sumValue  = 0;
@@ -123,24 +110,12 @@ export class RealTimeComponent implements OnInit {
     this.CO2midValue = (Math.round((sumValue / sensorData.length + Number.EPSILON) * 100) / 100).toFixed(2);
   }
 
-  saveGraphicImg(element, name) {
+  guardarImg(element, name) {
     html2canvas(element, {scrollY: -window.scrollY, scrollX: -window.scrollX}).then(canvas => {
       const a = document.createElement('a');
       a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
       a.download = name + "graphic" + this.datePipe.transform(new Date(), 'yyyyMMdd') +  '.jpg';
       a.click();
-    });
-  }
-
-  saveGraphicPdf(element, name) {
-    html2canvas(element, {scrollY: -window.scrollY, scrollX: -window.scrollX}).then(canvas => {
-      const pdf = new jsPDF();
-      const imgData = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-      const imgProps= pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth() - 40;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      pdf.addImage(imgData, 'PNG', 18, 20, pdfWidth, pdfHeight);
-      pdf.save(name +"graphic" + this.datePipe.transform(new Date(), 'yyyyMMdd') + ".pdf");
     });
   }
 }

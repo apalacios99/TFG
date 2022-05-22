@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {E404Component} from "./@core/components/errors/e404.component";
-import {E500Component} from "./@core/components/errors/e500.component";
 import {RealTimeComponent} from "./@core/components/real-time/real-time.component";
+import {LoginComponent} from "./@core/components/login/login.component";
+import {NoUserGuard} from "./@core/guards/no-user.guard";
+import {UserGuard} from "./@core/guards/user.guard";
 
 const routes: Routes = [
   {
@@ -10,9 +11,8 @@ const routes: Routes = [
     redirectTo: '/tiempo-real',
     pathMatch: 'full',
   },
-  { path: 'tiempo-real', component: RealTimeComponent, data: { title: 'Datos en tiempo real' } },
-  { path: '404', component: E404Component, data: { title: 'Page 404' } },
-  { path: '500', component: E500Component, data: { title: 'Page 500' } }
+  { path: 'tiempo-real', component: RealTimeComponent, canActivate: [UserGuard], data: { title: 'Tiempo real' } },
+  { path: 'iniciar-sesion', component: LoginComponent, canActivate: [NoUserGuard], data: { title: 'Iniciar sesión' } }
 ];
 
 

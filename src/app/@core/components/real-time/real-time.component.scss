@@ -12,27 +12,21 @@
   }
 }
 
-.rounded-circle{
-  max-width: 85px;
-  max-height: 85px;
-  min-height: 85px;
-  min-width: 85px;
-  font-size: 13px;
-  border: 2px solid lightgray;
-}
-
-.recommended-value{
-  border-color: rgba(182,220,150,0.58);
-}
-
-.min-value{
-  border-color: rgba(220,141,138,0.58);
-}
-
-.max-value{
-  border-color: rgba(220,141,138,0.58);
-}
-
 .myCustomModalClass .modal-dialog {
   min-width: 900px;
+}
+
+.computer {
+  display: contents;
+}
+.mobil {
+  display: none;
+}
+@media (max-width: 600px) {
+  .mobil {
+    display: contents;
+  }
+  .computer {
+    display: none;
+  }
 }

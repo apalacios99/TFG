@@ -8,91 +8,76 @@
       <div class="card-header p-2 d-flex">
         <div class="w-75">Dióxido de carbono</div>
 
-        <div class="w-25 d-flex justify-content-end">
-          <i class="far fa-image mr-3" (click)="saveGraphicImg(CO2_ELEMENT,'CO2')"></i>
-          <i class="fas fa-file-pdf mr-3" (click)="saveGraphicPdf(CO2_ELEMENT,'CO2')"></i>
-          <i class="fas fa-expand-alt fa-1x" (click)="openModal(OPEN_CO2)"></i>
+        <div class="w-25 d-flex justify-content-end align-items-center h-100">
+          <div (click)="guardarImg(CO2_ELEMENT,'CO2')" class="pointer">
+            <i class="far fa-image mr-3" ></i>
+          </div>
         </div>
       </div>
 
-      <div class="d-flex justify-content-center">
-        <div class="max-value m-2 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
-          <div class="text-center">
-            Máximo<br/>
-            <h4>{{CO2maxValue}}</h4>
-          </div>
+     <div class="computer">
+       <div class="d-flex justify-content-end computer" style="margin-right: 20px">
+         <div class="border mt-3" style="padding: 8px">
+           <div class="d-flex">
+             <div style="width: 20px; height: 20px; background-color: #00b0ff; margin-left: 10px"></div>
+             <div style="margin-left: 5px">Valor mínimo: <b>{{CO2minValue}}</b></div>
+           </div>
+           <div class="d-flex">
+             <div style="width: 20px; height: 20px; background-color: #00c853; margin-left: 10px"></div>
+             <div style="margin-left: 5px">Valor medio: <b>{{CO2midValue}}</b></div>
+           </div>
+           <div class="d-flex">
+             <div style="width: 20px; height: 20px; background-color: #d50000; margin-left: 10px"></div>
+             <div style="margin-left: 5px">Valor máximo: <b>{{CO2maxValue}}</b></div>
+           </div>
+         </div>
+       </div>
+
+       <div class="p-2 ">
+         <canvas baseChart
+                 [height]="200"
+                 [datasets]="CO2barChartData"
+                 [labels]="CO2barChartLabels"
+                 [options]="CO2barChartOptions"
+                 [legend]="barChartLegend"
+                 [chartType]="chartType">
+         </canvas>
+       </div>
+     </div>
+
+      <div class="mobil">
+        <div class="p-2 ">
+          <canvas baseChart
+                  [height]="320"
+                  [datasets]="CO2barChartData"
+                  [labels]="CO2barChartLabels"
+                  [options]="CO2barChartOptions"
+                  [legend]="barChartLegend"
+                  [chartType]="chartType">
+          </canvas>
         </div>
-        <div class="recommended-value m-2 p-2 rounded-circle d-flex justify-content-center align-items-center">
-          <div class="text-center">
-            Medio<br/>
-            <h4>{{CO2midValue}}</h4>
-          </div>
-        </div>
-        <div class="min-value m-2 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
-          <div class="text-center">
-            Mínimo<br/>
-            <h4>{{CO2minValue}}</h4>
+
+        <div class="d-flex justify-content-end mb-3" style="margin-right: 20px">
+          <div class="border mt-3" style="padding: 8px">
+            <div class="d-flex">
+              <div style="width: 20px; height: 20px; background-color: #00b0ff; margin-left: 10px"></div>
+              <div style="margin-left: 5px">Valor mínimo: <b>{{CO2minValue}}</b></div>
+            </div>
+            <div class="d-flex">
+              <div style="width: 20px; height: 20px; background-color: #00c853; margin-left: 10px"></div>
+              <div style="margin-left: 5px">Valor medio: <b>{{CO2midValue}}</b></div>
+            </div>
+            <div class="d-flex">
+              <div style="width: 20px; height: 20px; background-color: #d50000; margin-left: 10px"></div>
+              <div style="margin-left: 5px">Valor máximo: <b>{{CO2maxValue}}</b></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="p-2">
-        <canvas baseChart
-                [height]="200"
-                [datasets]="CO2barChartData"
-                [labels]="CO2barChartLabels"
-                [options]="CO2barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="chartType">
-        </canvas>
-      </div>
+
+
     </div>
   </div>
   <div class="col-md-2"></div>
 </div>
-
-<ng-template #OPEN_CO2 let-modal >
-  <div class="modal-body">
-    <div class="container">
-      <div class="d-flex mb-2 w-100">
-        <div class="d-flex w-75 font-weight-bold">Dióxido de carbono</div>
-        <div class="d-flex justify-content-end w-25">
-          <a class="text-danger" (click)="modal.close()">
-            <i class="fas fa-times-circle fa-2x"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <div class="max-value m-3 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
-          <div class="text-center">
-            Valor máximo<br/>
-            <h4>{{CO2maxValue}}</h4>
-          </div>
-        </div>
-        <div class="recommended-value m-3 p-2 rounded-circle d-flex justify-content-center align-items-center">
-          <div class="text-center">
-            Valor medio<br/>
-            <h4>{{CO2midValue}}</h4>
-          </div>
-        </div>
-        <div class="min-value m-3 p-2 rounded-circle d-flex justify-content-center align-items-center text-center">
-          <div class="text-center">
-            Valor mínimo<br/>
-            <h4>{{CO2minValue}}</h4>
-          </div>
-        </div>
-      </div>
-      <div class="p-2" style="display: block">
-        <canvas baseChart
-                [height]="modalSize"
-                [datasets]="CO2barChartData"
-                [labels]="CO2barChartLabels"
-                [options]="CO2barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="chartType">
-        </canvas>
-      </div>
-    </div>
-  </div>
-</ng-template>
 

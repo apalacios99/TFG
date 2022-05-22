@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { E404Component } from './@core/components/errors/e404.component';
-import { E500Component } from './@core/components/errors/e500.component';
 import { RealTimeComponent } from './@core/components/real-time/real-time.component';
 
 import { AngularFireModule } from '@angular/fire';
@@ -17,7 +15,6 @@ import { ChartsModule } from 'ng2-charts';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { GoogleApiModule, NgGapiClientConfig, NG_GAPI_CONFIG } from 'ng-gapi';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
@@ -26,25 +23,17 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {MatSelectModule} from "@angular/material/select";
-
-
-const gapiClientConfig: NgGapiClientConfig = { //HcRgakaA7c9E0HK01eqvqveb
-  client_id: '266272395464-4330aq73pm5tnlc9fdbnjajh1omcldjf.apps.googleusercontent.com', // your client ID
-  discoveryDocs: ['https://content.googleapis.com/discovery/v1/apis/bigquery/v2/rest'],
-  // cookie_policy: 'single_host_origin'
-  scope: [
-    'https://www.googleapis.com/auth/bigquery',
-    'https://www.googleapis.com/auth/cloud-platform',
-    // 'https://www.googleapis.com/auth/cloud-platform.read-only'
-  ].join(' ')
-};
+import { LoginComponent } from './@core/components/login/login.component';
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {LoginService} from "./@core/services/auth/login.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     RealTimeComponent,
-    E404Component,
-    E500Component
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,13 +41,12 @@ const gapiClientConfig: NgGapiClientConfig = { //HcRgakaA7c9E0HK01eqvqveb
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     ChartsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    GoogleApiModule.forRoot({
-      provide: NG_GAPI_CONFIG,
-      useValue: gapiClientConfig
-    }),
     HttpClientModule,
     NgxSliderModule,
     MatTabsModule,
@@ -71,6 +59,7 @@ const gapiClientConfig: NgGapiClientConfig = { //HcRgakaA7c9E0HK01eqvqveb
     MatSelectModule
   ],
   providers: [DatePipe,
+    LoginService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
   bootstrap: [AppComponent]

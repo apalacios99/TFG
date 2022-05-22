@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import {SensorData} from "../../interfaces/sensor-data";
+import {Sensor} from "../../interfaces/sensor";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
   private dbPath = '/dispositivos';
-  private collection: AngularFirestoreCollection<SensorData>;
+  private collection: AngularFirestoreCollection<Sensor>;
 
   constructor(private angularFirestore: AngularFirestore) {
   }
