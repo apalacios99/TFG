@@ -14,7 +14,7 @@ export class FirestoreService {
 
   getSensorData(date): AngularFirestoreCollection {
     this.collection = this.angularFirestore.collection(this.dbPath + '/CO2/mediciones',
-      ref => ref.where('fechaHora', '>=', date + 'Z'));
+      ref => ref.where('fechaHora', '>=', date + 'Z').orderBy('fechaHora', 'asc'));
     return this.collection;
   }
 }
