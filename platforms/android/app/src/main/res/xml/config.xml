@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.remesas.asociacionRemesas" version="1.1.1" xmlns="http://www.w3.org/ns/widgets">
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="FileOpener2">
+        <param name="android-package" value="io.github.pwlin.cordova.plugins.fileopener2.FileOpener2" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
+    </feature>
+    <name>Remesas</name>
+    <author email="socesa@soft-control.net" href="https://www.soft-control.net">
+        Soft Control Informática S.A.
+    </author>
+    <content src="index.html" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
+    <access origin="*" />
+    <allow-intent href="market:*" />
+    <icon density="mdpi" src="www/assets/Iconos/android/mdpi.png" />
+    <icon density="hdpi" src="www/assets/Iconos/android/hdpi.png" />
+    <icon density="xhdpi" src="www/assets/Iconos/android/xhdpi.png" />
+    <icon density="xxhdpi" src="www/assets/Iconos/android/xxhdpi.png" />
+    <icon density="xxxhdpi" src="www/assets/Iconos/android/xxxhdpi.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="scheme" value="app" />
+    <preference name="hostname" value="localhost" />
+</widget>
