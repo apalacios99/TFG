@@ -20,7 +20,6 @@
 		86E29C59A4C2480A9D6841AC /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 715A111AB13D469CA5762FB3 /* CDVFile.m */; };
 		C2254C60FEFC48E5878C1748 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0B96CD77D45E8A745DA6E /* CDVAssetLibraryFilesystem.m */; };
 		D7A27548C98D41F480407B1C /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2705B48A104752A970D326 /* CDVDevice.m */; };
-		BE726BF778B342CBABEF4AF6 /* FileOpener2.m in Sources */ = {isa = PBXBuildFile; fileRef = A03B8C5405444BDE9DDDDF01 /* FileOpener2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +78,6 @@
 		ED1BC7391E8B4EB2AE2DE98F /* CDVCapture.bundle */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.plug-in"; path = CDVCapture.bundle; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Asociacion Remesas/config.xml"; sourceTree = "<group>"; };
-		A03B8C5405444BDE9DDDDF01 /* FileOpener2.m */ = {isa = PBXFileReference; name = "FileOpener2.m"; path = "cordova-plugin-file-opener2/FileOpener2.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		0332123FAED24FCA84576F9B /* FileOpener2.h */ = {isa = PBXFileReference; name = "FileOpener2.h"; path = "cordova-plugin-file-opener2/FileOpener2.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +193,6 @@
 				8F642C74AF924A34BC330917 /* CDVAssetLibraryFilesystem.h */,
 				8B1FA2DD6DF74AFA89371B33 /* CDVCapture.m */,
 				2B0F6C6447064AA5A33CD767 /* CDVCapture.h */,
-				A03B8C5405444BDE9DDDDF01 /* FileOpener2.m */,
-				0332123FAED24FCA84576F9B /* FileOpener2.h */,
 			);
 			name = Plugins;
 			path = "Asociacion Remesas/Plugins";
@@ -332,7 +327,6 @@
 				6940E32AC5324E73B956FB96 /* CDVLocalFilesystem.m in Sources */,
 				C2254C60FEFC48E5878C1748 /* CDVAssetLibraryFilesystem.m in Sources */,
 				0014F522929742B9B701E346 /* CDVCapture.m in Sources */,
-				BE726BF778B342CBABEF4AF6 /* FileOpener2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19139,7 +19139,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\a0504\Desktop\UEM\4º Ingeniería Biomédica 2.0\TFG\Angular\TFG\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
+    /*! D:\Proyectos de Visual Studio\TFG\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
 
     __webpack_require__(
@@ -19147,7 +19147,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/zone.js/dist/zone-legacy.js");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\a0504\Desktop\UEM\4º Ingeniería Biomédica 2.0\TFG\Angular\TFG\src\polyfills.ts */
+    /*! D:\Proyectos de Visual Studio\TFG\src\polyfills.ts */
     "./src/polyfills.ts");
     /***/
   }

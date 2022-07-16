@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.remesas.asociacionRemesas" version="1.1.1">
-    <name>Remesas</name>
-    <author email="socesa@soft-control.net" href="https://www.soft-control.net">
-        Soft Control Informática S.A.
-    </author>
+<widget id="io.cordova.tfg.alejandrapalacios" version="1.1.1">
+    <name>TFG Alejandra Palacios</name>
+    <author email="a0504ale@hotmail.com"></author>
 
     <preference name="Orientation" value="portrait" />
     <content src="index.html"/>
@@ -14,7 +12,6 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-      <allow-intent href="market:*" />
       <icon src="www/assets/Iconos/android/mdpi.png" density="mdpi" />
       <icon src="www/assets/Iconos/android/hdpi.png" density="hdpi" />
       <icon src="www/assets/Iconos/android/xhdpi.png" density="xhdpi" />
@@ -61,7 +58,6 @@
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" />
-
 
     <preference name="scheme" value="app" />
     <preference name="hostname" value="localhost" />

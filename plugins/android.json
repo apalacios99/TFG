@@ -8,20 +8,16 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.cordova.remesas.asociacionRemesas"
+      "PACKAGE_NAME": "io.cordova.tfg.alejandrapalacios"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.cordova.remesas.asociacionRemesas"
-    },
-    "cordova-plugin-file-opener2": {
-      "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "io.cordova.remesas.asociacionRemesas"
+      "PACKAGE_NAME": "io.cordova.tfg.alejandrapalacios"
     },
     "cordova-plugin-media-capture": {
-      "PACKAGE_NAME": "io.cordova.remesas.asociacionRemesas"
+      "PACKAGE_NAME": "io.cordova.tfg.alejandrapalacios"
     },
     "cordova-plugin-wkwebview-engine": {
-      "PACKAGE_NAME": "io.cordova.remesas.asociacionRemesas"
+      "PACKAGE_NAME": "io.cordova.tfg.alejandrapalacios"
     }
   },
   "dependent_plugins": {}

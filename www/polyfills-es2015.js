@@ -3248,7 +3248,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\a0504\Desktop\UEM\4º Ingeniería Biomédica 2.0\TFG\Angular\TFG\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! D:\Proyectos de Visual Studio\TFG\src\polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })
